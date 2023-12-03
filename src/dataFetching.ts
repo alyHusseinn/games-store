@@ -38,24 +38,25 @@ async function fetchGamesData() {
             }
             return res.json();
         })
-        .then((res: Array<GameType>) => {
-            GamesData = res;
+        .then((res) => {
+            GamesData = res.results;
+            console.log(GamesData);
         })
         .catch((err) => console.error(err));
 }
 
 async function getAllGames(): Promise<Array<GameType>> {
-    if (!GamesData.length) {
+    if (GamesData.length == 0) {
         await fetchGamesData();
     }
     return GamesData;
 }
 
 async function getGame(id: number): Promise<GameType> {
-    if (!GamesData.length) {
+    if (GamesData.length == 0) {
         await fetchGamesData();
     }
-    return GamesData.find(g => g.id === id) as GameType;
+    return GamesData.find(g => g.id == id) as GameType;
 }
 
 export { getAllGames, getGame }
