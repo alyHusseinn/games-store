@@ -18,7 +18,7 @@
 // 1. function to Fetch the games and store it in a global variable
 // 2. functions to getWhatWeWant from that global variable
 
-import axios from "axios";
+// import axios from "axios";
 const API_URL = 'https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090';
 
 export type GameType = {
