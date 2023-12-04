@@ -17,9 +17,9 @@ function Root() {
       <div className="games-data">
         {games.map((game,idx) => {
           return (
-            <div className="game">
-              <div className="game-name">{game.name}</div>
-              <img src={game.background_image} alt={game.name + ", game"} />
+            <div className="game" key={idx}>
+              <div className="game-name" key={idx}>{game.name}</div>
+              <img src={game.background_image} alt={game.name + ", game"} key={idx}/>
               <Link to={`/games/${game.id}`} key={idx}>open {game.name}</Link>
             </div>
           );

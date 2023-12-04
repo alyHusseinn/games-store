@@ -11,12 +11,12 @@ function GamesShop() {
 
   return (
     <div className="games-data">
-      {games.map((game) => {
+      {games.map((game,idx) => {
         return (
-          <div className="game">
-            <div className="name">{game.name}</div>
-            <img src={game.background_image} alt={game.name + ", game"} />
-            <Link to={`/games/${game.id}`}>open {game.name}</Link>
+          <div className="game" key={idx}>
+            <div className="name" key={idx}>{game.name}</div>
+            <img src={game.background_image} alt={game.name + ", game"} key={idx}/>
+            <Link to={`/games/${game.id}`} key={idx}>open {game.name}</Link>
           </div>
         );
       })}
