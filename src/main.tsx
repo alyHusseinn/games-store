@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 // import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
 import Root, { loader as rootLoader } from "./pages/root";
 import GamesShop, { loader as gamesLoader } from "./pages/gamesShop";
 import Game, { loader as gameLoader } from "./pages/game";
@@ -10,21 +11,26 @@ import Game, { loader as gameLoader } from "./pages/game";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <App />,
     loader: rootLoader,
-    // children: [
-    // ]
+    children: [
+      {
+        index: true,
+        element: <Root />,
+        loader: gamesLoader,
+      },
+      {
+        path: "games",
+        element: <GamesShop />,
+        loader: gamesLoader,
+      },
+      {
+        path: "games/:gameId",
+        element: <Game />,
+        loader: gameLoader,
+      },
+    ],
   },
-  {
-    path: "games",
-    element: <GamesShop/>,
-    loader: gamesLoader,
-  },
-  {
-    path: "games/:gameId",
-    element: <Game/>,
-    loader: gameLoader,
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

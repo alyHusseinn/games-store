@@ -24,13 +24,13 @@ export type GameType = {
     background_image: string,
     // platforms: Array<{platform: {id:number, name:string}}>,
     genres: Array<{ id: string, name: string, image_background: string }>,
-    short_screens: Array<{ image: string }>,
+    short_screenshots: Array<{ image: string }>,
 }
 
 let GamesData: Array<GameType> = [];
 
 async function fetchGamesData() {
-    await fetch('https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090')
+    await fetch('https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090', {mode: 'cors'})
         .then(res => {
             if (!res.ok) {
                 console.error(res.statusText);

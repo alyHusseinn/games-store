@@ -12,7 +12,9 @@ function Game() {
   return (
     <div className="game">
       <div className="game-name">{game.name}</div>
-      <img src={game.background_image} alt={game.name} />
+      {game.short_screenshots.map((img, idx) => (
+        <img src={img.image} alt={game.name} key={idx} />
+      ))}
     </div>
   );
 }
