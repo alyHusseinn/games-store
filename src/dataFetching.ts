@@ -18,6 +18,9 @@
 // 1. function to Fetch the games and store it in a global variable
 // 2. functions to getWhatWeWant from that global variable
 
+import axios from "axios";
+const API_URL = 'https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090';
+
 export type GameType = {
     id: number,
     name: string,
@@ -29,32 +32,47 @@ export type GameType = {
 
 let GamesData: Array<GameType> = [];
 
+// const Headers = { mode: 'cors', headers: { "access-control-allow-origin": "https://localhost:5173" } };
+
 async function fetchGamesData() {
-    await fetch('https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090', {mode: 'cors'})
-        .then(res => {
-            if (!res.ok) {
-                console.error(res.statusText);
-                throw new Error(res.statusText);
-            }
-            return res.json();
-        })
-        .then((res) => {
-            GamesData = res.results;
-            console.log(GamesData);
-        })
-        .catch((err) => console.error(err));
+    try {
+        const res = await fetch(API_URL,{mode: 'cors'});
+        const response = await res.json();
+
+        console.log(response.results);
+        return response.results;
+    } catch (err) {
+        throw Error;
+        console.log(err);
+    }
+
+
+
+    // await fetch('https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090',{mode: 'cors'})
+    //     .then(res => {
+    //         if (!res.ok) {
+    //             console.error(res.statusText);
+    //             throw new Error(res.statusText);
+    //         }
+    //         return res.json();
+    //     })
+    //     .then((res) => {
+    //         GamesData = res.results;
+    //         console.log(GamesData);
+    //     })
+    // .catch((err) => console.error(err));
 }
 
 async function getAllGames(): Promise<Array<GameType>> {
     if (GamesData.length == 0) {
-        await fetchGamesData();
+        GamesData = await fetchGamesData();
     }
     return GamesData;
 }
 
 async function getGame(id: number): Promise<GameType> {
     if (GamesData.length == 0) {
-        await fetchGamesData();
+        GamesData = await fetchGamesData();
     }
     return GamesData.find(g => g.id == id) as GameType;
 }

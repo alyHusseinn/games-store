@@ -1,8 +1,13 @@
 import { useLoaderData } from "react-router-dom";
-import { GameType, getGame } from "../dataFetching";
+import { type GameType, getGame } from "../dataFetching";
 
-export async function loader({ params }): Promise<GameType> {
-  const game = getGame(params.gameId);
+type paramsType = {
+  gameId: number;
+}
+
+export async function loader({params}: {params: paramsType}): Promise<GameType> {
+  const gameID = params.gameId;
+  const game = getGame(gameID);
   return game;
 }
 
