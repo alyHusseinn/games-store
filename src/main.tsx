@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.tsx";
-import "./index.css";
+import './styles/App.scss';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Root, { loader as rootLoader } from "./pages/root";

@@ -1,0 +1,114 @@
+@import './base';
+
+header{
+    position: fixed;
+    @include Flex(row, space-around, wrap);
+    gap: 1rem;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    padding-block: 1rem;
+    background-color: $secondary-color;
+    color: $txt-color;
+    box-shadow: 0px 7px 30px black;
+    filter: drop-shadow(10px);
+    transition: all 0.6s cubic-bezier(1,-1.59, 0, 3.2);
+
+    .logo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        h1{
+            font-size: 35px;
+            color: $txt-color;
+        }
+        img{
+            width: 50px;
+            filter: invert(70%);
+        }
+    }
+
+    form{
+        background-color: $txt-color;
+        @include Flex(row, center, nowrap);
+        align-items: center;
+        border-radius: 0.5rem;
+        border: 2px solid $txt-color;
+        overflow: hidden;
+        opacity: 0.6;
+        margin-left: 10px;
+        margin-right: 10px;
+        transition: all 0.5s ease-in-out;
+
+        &:hover{
+            opacity: 0.8;
+            input{
+                width: 100%;
+            }
+        }
+        input{
+            width: 20%;
+            font-size: 25px;
+            font-style: $secondary-color;
+            padding: 13px;
+            border: 0;
+            transition: width 1s cubic-bezier(0.87,-0.45, 0.19, 1.49);
+            // &:hover{
+            //     width: 100%;
+            // }
+            &:focus{
+                border: 0;
+                outline: none;
+            }
+        }
+        button{
+            background-color: $txt-color;
+            border: 0;
+            padding: 10px;
+            transition: all 0.3s ease-in-out;
+            
+            &:hover{
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+            img{
+                filter: drop-shadow(2px 4px 4px black);
+            }
+        }
+    }
+
+    nav{
+        @include Flex(row, space-between, nowrap);
+        align-items: center;
+        flex-basis: 20%;
+        gap: 2rem;
+        a{
+            color: $txt-color-sec;
+            font-size: 20px;
+            border-bottom: 2px solid $secondary-color;
+            transition: all 0.3s ease-in-out;
+            &:hover{
+                border-bottom: 2px solid $txt-color;
+                color: $txt-color;
+            }
+        }
+        img{
+            width: 40px;
+            filter: invert(70%);
+            &:hover{
+                filter: invert(100%);
+            }
+        }
+    }
+}
+
+
+.hide{
+    transform: translateY(-110%);
+}
+
+@media  screen and (max-width: 1000px) {
+    header{
+        flex-direction: column;
+    }
+}

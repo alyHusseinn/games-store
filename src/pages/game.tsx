@@ -1,12 +1,12 @@
-import { useLoaderData, ActionFunctionArgs, Params, ParamParseKey } from "react-router-dom";
+import { LoaderFunctionArgs, useLoaderData, Params, ParamParseKey,  } from "react-router-dom";
 import { type GameType, getGame } from "../dataFetching";
 
-const gamePath = "/game/:gameId";
-interface paramsType extends ActionFunctionArgs {
-  params: Params<ParamParseKey<typeof gamePath>>;
-}
+// const gamePath = "/game/:gameId";
+// interface paramsType extends LoaderFunctionArgs {
+//   params: Params<ParamParseKey<typeof gamePath>>;
+// }
 
-export async function loader({params}: paramsType): Promise<GameType> {
+export async function loader({params}: {params: Params<"gameId">}): Promise<GameType> {
   const gameID = Number(params.gameId);
   const game = getGame(gameID);
   return game;

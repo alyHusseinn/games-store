@@ -1,0 +1,20 @@
+$secondary-color: #1c3d58;
+$primary-color: #1E1E1E;
+$txt-color: white;
+$txt-color-sec: rgba(255, 255, 255, 0.654);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+@mixin Flex($dir, $just, $wrap){
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $just;
+    flex-wrap: $wrap;
+}
