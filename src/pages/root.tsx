@@ -1,31 +1,42 @@
-import { Link, useLoaderData } from "react-router-dom";
-import { getAllGames, GameType } from "../dataFetching";
+ import { Link, useLoaderData } from "react-router-dom";
+// import { getAllGames, GameType } from "../dataFetching";
+import MainSwiper from "../components/mainSwiper";
 
-export async function loader(): Promise<Array<GameType>> {
-  const games = await getAllGames();
-  return games;
-}
+// export async function loader(): Promise<Array<GameType>> {
+//   const games = await getAllGames();
+//   return games;
+// }
 
 function Root() {
-  const games: Array<GameType> = useLoaderData() as Array<GameType>;
+  // const games: Array<GameType> = useLoaderData() as Array<GameType>;
 
   return (
-    <main>
+    <>
+      <MainSwiper />
+
       <Link to="/games">
         <button>Go to Games</button>
       </Link>
-      <div className="games-data">
-        {games.map((game,idx) => {
+      {/* <div className="games-data">
+        {games.map((game, idx) => {
           return (
             <div className="game" key={idx}>
-              <div className="game-name" key={idx}>{game.name}</div>
-              <img src={game.background_image} alt={game.name + ", game"} key={idx}/>
-              <Link to={`/games/${game.id}`} key={idx}>open {game.name}</Link>
+              <div className="game-name" key={idx}>
+                {game.name}
+              </div>
+              <img
+                src={game.background_image}
+                alt={game.name + ", game"}
+                key={idx}
+              />
+              <Link to={`/games/${game.id}`} key={idx}>
+                open {game.name}
+              </Link>
             </div>
           );
         })}
-      </div>
-    </main>
+      </div> */}
+    </>
   );
 }
 

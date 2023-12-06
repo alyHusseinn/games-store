@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import './styles/App.scss';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Root, { loader as rootLoader } from "./pages/root";
+import Root from "./pages/root";
 import GamesShop, { loader as gamesLoader } from "./pages/gamesShop";
 import Game, { loader as gameLoader } from "./pages/game";
 
@@ -11,12 +11,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: rootLoader,
+    // loader: rootLoader,
     children: [
       {
         index: true,
         element: <Root />,
-        loader: gamesLoader,
+        // loader: gamesLoader,
       },
       {
         path: "games",

@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, useLoaderData, Params, ParamParseKey,  } from "react-router-dom";
+import {  useLoaderData, Params } from "react-router-dom";
 import { type GameType, getGame } from "../dataFetching";
 
 // const gamePath = "/game/:gameId";

@@ -1,4 +1,5 @@
 @use './header';
+@use './root';
 @import './base';
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,500&family=Roboto:wght@300&display=swap");
 
@@ -13,3 +14,14 @@ body{
     width: 100%;
     background-color: $primary-color;
 }
+
+.container{
+  width: 100%;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+// .container{
+//   margin-top: 200px;
+// }

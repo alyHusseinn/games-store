@@ -1,0 +1,69 @@
+@import "./base";
+
+.main-swiper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .slide {
+    width: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(30%) invert(10%);
+    }
+  }
+  .info {
+    position: absolute;
+    bottom: 10%;
+    z-index: 1;
+    @include Flex(column, space-between, wrap);
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+
+    .intro {
+      font-size: 2vw;
+      color: $txt-color;
+    }
+
+    a {
+      align-self: flex-start;
+      margin-left: 3rem;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 1.5rem;
+      font-size: 30px;
+      border-radius: 50px;
+      background-color: $secondary-color;
+      color: $txt-color;
+      border: 3px solid $txt-color;
+      box-shadow: 10px 10px 0 $txt-color, 15px 15px 0 $txt-color;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $txt-color;
+        color: $secondary-color;
+        border: 3px solid $secondary-color;
+        box-shadow: 10px 10px 0 $secondary-color, 15px 15px 0 $secondary-color;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+        .intro{
+            font-size: 5vw;
+        }
+        a{
+            font-size: 15px;
+            box-shadow: 5px 5px 0 $txt-color, 10px 10px 0 $txt-color;
+        }
+    }
+  }
+}
