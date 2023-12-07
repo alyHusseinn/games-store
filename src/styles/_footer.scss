@@ -1,0 +1,91 @@
+@import "./base";
+
+footer {
+    @include Flex(column, space-between, nowrap);
+    gap: 2rem;
+  background-color: $secondary-color;
+  padding: 2rem;
+  padding-bottom: 0;
+  
+  main{
+    // @include Flex(row, space-around, wrap);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem
+  }
+
+  .about {
+    @include Flex(column, space-between, nowrap);
+    gap: 20px;
+    .logo {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      border-bottom: 2px solid $txt-color;
+      h1 {
+        font-size: 35px;
+        color: $txt-color;
+      }
+      img {
+        width: 50px;
+        filter: invert(70%);
+      }
+    }
+
+    .info {
+      width: 250px;
+      color: $txt-color-sec;
+      font-size: 20px;
+    }
+  }
+
+  .useful-links{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    h2{
+        font-size: 30px;
+        color: $txt-color;
+        text-transform: uppercase;
+        border-bottom: 2px solid $txt-color;
+        text-align: center;
+    }
+    nav{
+        @include Flex(column, center, nowrap);
+        gap: 0.5rem;
+        color: $txt-color-sec;
+        
+        a{
+            color: $txt-color-sec;
+            font-size: 20px;
+            border-bottom: 1px solid $secondary-color;
+            &:hover{
+                color: $txt-color;
+            }
+        }
+    }
+  }
+
+  .github{
+    text-align: center;
+    padding-block: 15px;
+    a{
+       font-size: 20px;
+        color: $txt-color-sec;
+        span{
+            color: $txt-color;
+        } 
+        
+    }
+    
+    border-top: 1px solid $txt-color-sec;
+  }
+
+  
+}
+@media  screen and (min-width: 600px) {
+    footer main {
+        justify-content: space-around;
+    }
+  }

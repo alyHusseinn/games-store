@@ -14,9 +14,7 @@ function Root() {
     <>
       <MainSwiper />
 
-      <Link to="/games">
-        <button>Go to Games</button>
-      </Link>
+      
       {/* <div className="games-data">
         {games.map((game, idx) => {
           return (
