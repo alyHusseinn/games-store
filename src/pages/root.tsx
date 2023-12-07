@@ -1,4 +1,4 @@
- import { Link, useLoaderData } from "react-router-dom";
+//  import { Link, useLoaderData } from "react-router-dom";
 // import { getAllGames, GameType } from "../dataFetching";
 import MainSwiper from "../components/mainSwiper";
 
@@ -13,6 +13,21 @@ function Root() {
   return (
     <>
       <MainSwiper />
+
+      <div className="sec-2-root">
+        <div className="marquee-1">
+          <div>
+            <span>Your journy starts here.</span>
+            <span>your journy starts here</span>
+          </div>
+        </div>
+        <div className="marquee-2">
+          <div>
+            <span>Your journy starts here.</span>
+            <span>your journy starts here</span>
+          </div>
+        </div>
+      </div>
 
       
       {/* <div className="games-data">
