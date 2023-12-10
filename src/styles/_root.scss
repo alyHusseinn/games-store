@@ -1,6 +1,18 @@
 @import "./base";
 
 .main-swiper {
+  .swiper-button-next, .swiper-button-prev{
+    transform: scale(0.6);
+    color: $txt-color-sec;
+    padding: 2px;
+  }
+  // .swiper-pagination-bullet{
+  //   border-radius: 0;
+  //   width: 100px;
+  // }
+  .swiper-pagination-bullet-active{
+    background-color: $txt-color-sec;
+  }
   position: relative;
   width: 100%;
   height: 100vh;
@@ -8,7 +20,7 @@
     width: 100%;
     height: 100%;
   }
-  .slide {
+  .swiper-slide {
     width: 100%;
     overflow: hidden;
     img {
@@ -26,7 +38,7 @@
     @include Flex(column, space-between, wrap);
     align-items: center;
     text-align: center;
-    gap: 2rem;
+    gap: 1rem;
 
     .intro {
       font-size: 2vw;
@@ -39,48 +51,46 @@
       text-decoration: none;
       font-weight: 500;
       text-transform: uppercase;
-      padding: 1.5rem;
-      font-size: 30px;
+      padding: 0.7rem;
+      font-size: 25px;
       border-radius: 50px;
       background-color: $secondary-color;
-      color: $txt-color;
-      border: 3px solid $txt-color;
-      box-shadow: 10px 10px 0 $txt-color, 15px 15px 0 $txt-color;
+      color: $txt-color-sec;
+      border: 3px solid $txt-color-sec;
+      box-shadow: 6px 6px 0 3px $txt-color-sec;
       transition: all 0.3s ease-in-out;
+      opacity: 0.9;
 
       &:hover {
-        background-color: $txt-color;
-        color: $secondary-color;
-        border: 3px solid $secondary-color;
-        box-shadow: 10px 10px 0 $secondary-color, 15px 15px 0 $secondary-color;
+        background-color: $primary-color;
       }
     }
 
     @media screen and (max-width: 500px) {
-        .intro{
-            font-size: 5vw;
-        }
-        a{
-            font-size: 15px;
-            box-shadow: 5px 5px 0 $txt-color, 10px 10px 0 $txt-color;
-        }
+      .intro {
+        font-size: 5vw;
+      }
+      a {
+        font-size: 15px;
+      }
     }
   }
 }
 
-
-.sec-2-root{
+.sec-2-root {
   width: 100%;
-  height: 100vh;
-  .marquee-1, .marquee-2{
+  // height: 100vh;
+  overflow: hidden;
+  .marquee-1,
+  .marquee-2 {
     width: 100%;
-    height: 80px;
+    height: 60px;
     background-color: $primary-color;
-    color: $txt-color;
+    color: $txt-color-sec;
     position: relative;
     overflow: hidden;
 
-    div{
+    div {
       display: block;
       width: 200%;
       height: 100%;
@@ -89,40 +99,120 @@
       animation: marquee-animate 5s linear infinite;
       text-align: center;
       text-transform: uppercase;
-      font-size: 55px;
+      font-size: 30px;
 
-      span{
+      span {
         float: left;
         width: 50%;
-        line-height: 80px;
+        line-height: 60px;
       }
     }
-
   }
-  .marquee-2 div{
+  .marquee-2 div {
     animation: marquee-animate 5s linear infinite reverse;
-    background-color: #fff;
+    background-color: $txt-color-sec;
     color: $primary-color;
+  }
+
+  .descreption {
+    width: 100%;
+    // height: calc(100vh - 120px);
+    display: flex;
+    // flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 10px;
+    // overflow: hidden;
+    .img-btn {
+      // width: 40%;
+      width: 500px;
+      @include Flex(column, space-between, wrap);
+      gap: 2rem;
+      align-items: center;
+
+      img {
+        width: 100%;
+        transition: all 0.5s ease-in-out;
+        border: 1rem solid $primary-color;
+      }
+      a {
+        align-self: flex-start;
+        font-weight: 500;
+        text-transform: capitalize;
+        padding: 0.7rem;
+        font-size: 25px;
+        border-radius: 50px;
+        background-color: $secondary-color;
+        color: $txt-color-sec;
+        border: 3px solid $txt-color-sec;
+        box-shadow: 6px 6px 0 3px $txt-color-sec;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: $primary-color;
+        }
+      }
+    }
+    .txt {
+      // min-width: 40%;
+      width: 500px;
+      color: $txt-color-sec;
+      font-size: 15px;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid $txt-color-sec;
+      h1 {
+        color: $txt-color;
+        font-size: 30px;
+        // text-align: center;
+        text-transform: capitalize;
+        padding-bottom: 1rem;
+      }
+      h1 span {
+        color: $primary-color;
+        background-color: $txt-color;
+      }
+    }
   }
 }
 
 @keyframes marquee-animate {
-  from{
+  from {
     left: 0%;
-  }to{
+  }
+  to {
     left: -100%;
   }
 }
 
-@media  screen and (max-width: 500px) {
-
-  .marquee-1 div, .marquee-1 div{
-    width: 400%;
+@media screen and (min-width: 1050px) {
+  .descreption{
+    height: calc(100vh - 120px);
   }
-  .marquee-1 div span, .marquee-2 div span{
-    width: 5%;
-    font-size: 30px;
+  .sec-2-root{
+    height: 100vh;
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .descreption{
+    flex-direction: column;
+    .img-btn img{
+      // scale: 2;
+    }
+    // .img-btn, .txt{
+    //   max-width: 90%;
+    // }
+  }
+}
+  
+// }
 
+// @media screen and (max-width: 700px) {
+//   .img-btn{
+//     width: 100vw;
+//   }
+//   .descreption{
+//     flex-direction: column;
+//   }
+// }

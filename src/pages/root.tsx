@@ -1,6 +1,7 @@
-//  import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 // import { getAllGames, GameType } from "../dataFetching";
 import MainSwiper from "../components/mainSwiper";
+import Sec2Img from "../assets/imgs/root-sec-2.jpg";
 
 // export async function loader(): Promise<Array<GameType>> {
 //   const games = await getAllGames();
@@ -27,9 +28,27 @@ function Root() {
             <span>your journy starts here</span>
           </div>
         </div>
+
+        <div className="descreption">
+          <div className="img-btn">
+            <img src={Sec2Img} />
+            <Link to="/games">Explore our games..</Link>
+          </div>
+          <div className="txt">
+            <h1>
+              explore the <span>Best</span> games store in that world.
+            </h1>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            eligendi facere, soluta animi qui in ab placeat maxime repellendus
+            iusto, quasi aut officia. Cupiditate repellendus ipsam qui dolores
+            eos! Atque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Voluptas, dicta obcaecati aspernatur eveniet earum voluptatibus
+            doloremque eum natus veniam provident numquam, voluptate cumque
+            itaque, laudantium facere assumenda unde asperiores? Ad?
+          </div>
+        </div>
       </div>
 
-      
       {/* <div className="games-data">
         {games.map((game, idx) => {
           return (
