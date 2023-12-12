@@ -16,7 +16,7 @@ function GamesShop() {
           <div className="game" key={idx}>
             <div className="name" key={idx}>{game.name}</div>
             <img src={game.background_image} alt={game.name + ", game"} key={idx}/>
-            <Link to={`/games/${game.id}`} key={idx}>open {game.name}</Link>
+            <Link to={`/games/game/${game.id}`} key={idx}>open {game.name}</Link>
           </div>
         );
       })}

@@ -1,15 +1,16 @@
 import { Link, useLoaderData } from "react-router-dom";
-// import { getAllGames, GameType } from "../dataFetching";
-import MainSwiper from "../components/mainSwiper";
+import { getAllGames, GameType } from "../dataFetching";
+import MainSwiper from "../components/root/mainSwiper";
+import SecSwiper from "../components/root/secSwiper";
 import Sec2Img from "../assets/imgs/root-sec-2.jpg";
 
-// export async function loader(): Promise<Array<GameType>> {
-//   const games = await getAllGames();
-//   return games;
-// }
+export async function loader(): Promise<Array<GameType>> {
+  const games = await getAllGames();
+  return games;
+}
 
 function Root() {
-  // const games: Array<GameType> = useLoaderData() as Array<GameType>;
+  const games: Array<GameType> = useLoaderData() as Array<GameType>;
 
   return (
     <>
@@ -49,25 +50,7 @@ function Root() {
         </div>
       </div>
 
-      {/* <div className="games-data">
-        {games.map((game, idx) => {
-          return (
-            <div className="game" key={idx}>
-              <div className="game-name" key={idx}>
-                {game.name}
-              </div>
-              <img
-                src={game.background_image}
-                alt={game.name + ", game"}
-                key={idx}
-              />
-              <Link to={`/games/${game.id}`} key={idx}>
-                open {game.name}
-              </Link>
-            </div>
-          );
-        })}
-      </div> */}
+      <SecSwiper games={games} />
     </>
   );
 }

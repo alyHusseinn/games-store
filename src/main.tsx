@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import './styles/App.scss';
+import "./styles/App.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Root from "./pages/root";
+import Root, { loader as rootLoader } from "./pages/root";
 import GamesShop, { loader as gamesLoader } from "./pages/gamesShop";
 import Game, { loader as gameLoader } from "./pages/game";
 
@@ -11,12 +11,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // loader: rootLoader,
     children: [
       {
         index: true,
         element: <Root />,
-        // loader: gamesLoader,
+        loader: rootLoader,
       },
       {
         path: "games",
@@ -24,7 +23,7 @@ const router = createBrowserRouter([
         loader: gamesLoader,
       },
       {
-        path: "games/:gameId",
+        path: "games/game/:gameId",
         element: <Game />,
         loader: gameLoader,
       },

@@ -1,6 +1,6 @@
-import swipImg_1 from "../assets/imgs/swip-root-1.jpg";
-import swipImg_2 from "../assets/imgs/swip-root-2.jpg";
-import swipImg_3 from "../assets/imgs/swip-root-3.jpg";
+import swipImg_1 from "../../assets/imgs/swip-root-1.jpg";
+import swipImg_2 from "../../assets/imgs/swip-root-2.jpg";
+import swipImg_3 from "../../assets/imgs/swip-root-3.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Autoplay,

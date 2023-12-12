@@ -6,10 +6,6 @@
     color: $txt-color-sec;
     padding: 2px;
   }
-  // .swiper-pagination-bullet{
-  //   border-radius: 0;
-  //   width: 100px;
-  // }
   .swiper-pagination-bullet-active{
     background-color: $txt-color-sec;
   }
@@ -193,26 +189,73 @@
     height: 100vh;
   }
 }
+  
+.sec-root-swiper{
+  width: 100%;
+  height: 100vh;
 
-@media only screen and (max-width: 600px) {
-  .descreption{
-    flex-direction: column;
-    .img-btn img{
-      // scale: 2;
+  h1{
+    font-size: 35px;
+    text-transform: uppercase;
+    text-align: center;
+    height: 10%;
+    color: $txt-color;
+    text-decoration: underline;
+  }
+
+  .swiper{
+    height: 70%;
+    width: 90%;
+    overflow: hidden;
+  }
+  .swiper-slide{
+    width: 20%;
+    border: 5px solid $secondary-color;
+    height: calc(100% - 10px); // 30px is the height of the top and bottom borders
+    background-color: $secondary-color;
+    transition: all 0.5s ease-in-out;
+    &:hover{
+      border: 5px solid $txt-color-sec;
+      background-color: $txt-color-sec;
+      img{
+        filter: grayscale(0%);
+      }
+      h3{
+        color: $primary-color;
+      }
+      // transform: translateY(3px);
     }
-    // .img-btn, .txt{
-    //   max-width: 90%;
-    // }
+    a{
+      width: 100%;
+      overflow: hidden;
+      
+      img{
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+        object-position: center;
+        filter: grayscale(50%);
+        transition: all 0.5s ease-in-out;
+      }
+      h3{
+        color: $txt-color-sec;
+        text-align: center;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+    
+  }
+  @media screen and (max-width: 768px) {
+    height: 50vh;
+    padding-block: 1rem;
+    h1{
+      padding-bottom: 3rem;
+    }
+    .swiper{
+      height: 50%;
+      h3{
+        font-size: 10px;
+      }
+    }
   }
 }
-  
-// }
-
-// @media screen and (max-width: 700px) {
-//   .img-btn{
-//     width: 100vw;
-//   }
-//   .descreption{
-//     flex-direction: column;
-//   }
-// }
