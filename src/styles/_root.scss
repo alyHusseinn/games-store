@@ -75,8 +75,9 @@
 
 .sec-2-root {
   width: 100%;
-  // height: 100vh;
   overflow: hidden;
+  @include Flex(column, center, nowrap);
+  align-items: center;
   .marquee-1,
   .marquee-2 {
     width: 100%;
@@ -111,17 +112,13 @@
   }
 
   .descreption {
-    width: 100%;
-    // height: calc(100vh - 120px);
-    display: flex;
-    // flex-direction: row;
-    justify-content: center;
+    width: 80%;
+    @include Flex(row, center, wrap-reverse);
     align-items: center;
+    
     gap: 2rem;
-    padding: 10px;
-    // overflow: hidden;
+    padding-block: 5rem;
     .img-btn {
-      // width: 40%;
       width: 500px;
       @include Flex(column, space-between, wrap);
       gap: 2rem;
@@ -151,7 +148,6 @@
       }
     }
     .txt {
-      // min-width: 40%;
       width: 500px;
       color: $txt-color-sec;
       font-size: 15px;
@@ -160,7 +156,6 @@
       h1 {
         color: $txt-color;
         font-size: 30px;
-        // text-align: center;
         text-transform: capitalize;
         padding-bottom: 1rem;
       }
@@ -170,7 +165,9 @@
       }
     }
   }
+
 }
+
 
 @keyframes marquee-animate {
   from {
@@ -178,15 +175,6 @@
   }
   to {
     left: -100%;
-  }
-}
-
-@media screen and (min-width: 1050px) {
-  .descreption{
-    height: calc(100vh - 120px);
-  }
-  .sec-2-root{
-    height: 100vh;
   }
 }
   
