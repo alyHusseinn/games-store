@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { getAllGames, GameType } from "../dataFetching";
+import useUpdateTitle from "../hooks/useUpdateTitle";
 
 export async function loader(): Promise<Array<GameType>> {
   const games = await getAllGames();
@@ -8,6 +9,7 @@ export async function loader(): Promise<Array<GameType>> {
 
 function GamesShop() {
   const games: Array<GameType> = useLoaderData() as Array<GameType>;
+  useUpdateTitle('Games Shop');
 
   return (
     <div className="games-data">

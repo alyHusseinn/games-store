@@ -1,5 +1,6 @@
 import {  useLoaderData, Params } from "react-router-dom";
 import { type GameType, getGame } from "../dataFetching";
+import useUpdateTitle from "../hooks/useUpdateTitle";
 
 // const gamePath = "/game/:gameId";
 // interface paramsType extends LoaderFunctionArgs {
@@ -14,6 +15,7 @@ export async function loader({params}: {params: Params<"gameId">}): Promise<Game
 
 function Game() {
   const game: GameType = useLoaderData() as GameType;
+  useUpdateTitle(game.name);
 
   return (
     <div className="game">
