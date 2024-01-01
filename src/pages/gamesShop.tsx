@@ -1,6 +1,7 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getAllGames, GameType } from "../dataFetching";
 import useUpdateTitle from "../hooks/useUpdateTitle";
+import GameCard from "../components/shop/gameCard";
 
 export async function loader(): Promise<Array<GameType>> {
   const games = await getAllGames();
@@ -9,19 +10,16 @@ export async function loader(): Promise<Array<GameType>> {
 
 function GamesShop() {
   const games: Array<GameType> = useLoaderData() as Array<GameType>;
-  useUpdateTitle('Games Shop');
+  useUpdateTitle("Games Shop");
 
   return (
     <div className="games-data">
-      {games.map((game,idx) => {
-        return (
-          <div className="game" key={idx}>
-            <div className="name" key={idx}>{game.name}</div>
-            <img src={game.background_image} alt={game.name + ", game"} key={idx}/>
-            <Link to={`/games/game/${game.id}`} key={idx}>open {game.name}</Link>
-          </div>
-        );
-      })}
+      {games.map((game, idx) => (
+        <GameCard
+          game={game}
+          key={idx}
+        />
+      ))}
     </div>
   );
 }

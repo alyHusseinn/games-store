@@ -226,8 +226,12 @@
         transition: all 0.5s ease-in-out;
       }
       h3{
+        height: 20%;
+        @include Flex(row, center, wrap);
+        align-items: center;
         color: $txt-color-sec;
         text-align: center;
+        vertical-align:middle;
         transition: all 0.5s ease-in-out;
       }
     }
