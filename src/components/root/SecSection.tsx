@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import Sec2Img from "../../assets/imgs/root-sec-2.jpg";
+// import { v4 as uID } from "uuid";
 
 export default function SecSection() {
   return (
     <div className="sec-2-root">
       <div className="marquee-1">
         <div>
-          <span>Your journy starts here.</span>
-          <span>your journy starts here</span>
+          <span key={1}>Your journy starts here.</span>
+          <span key={2}>your journy starts here</span>
         </div>
       </div>
       <div className="marquee-2">
         <div>
-          <span>Your journy starts here.</span>
-          <span>your journy starts here</span>
+          <span key={1}>Your journy starts here.</span>
+          <span key={2}>your journy starts here</span>
         </div>
       </div>
 

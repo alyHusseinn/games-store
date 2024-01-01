@@ -31,8 +31,8 @@ export default function SecSwiper({ games }: { games: Array<GameType> }) {
         modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
         className="swiper"
       >
-        {games.map((game) => (
-          <SwiperSlide>
+        {games.map((game, idx) => (
+          <SwiperSlide key={idx}>
             <Link to={`/games/game/${game.id}`} className="game">
               <img src={game.background_image} />
               <h3>{game.name}</h3>
