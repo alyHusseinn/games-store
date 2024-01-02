@@ -1,6 +1,7 @@
 @use './header';
-@use './root';
 @use './footer';
+@use './root';
+@use './shop';
 @import './base';
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,500&family=Roboto:wght@300&display=swap");
 
@@ -23,24 +24,3 @@ body{
 body::-webkit-scrollbar{
   display: none;
 }
-// .sec-2-root{
-//   height: auto;
-// }
-// .marquee-1 div,
-// .marquee-1 div {
-//   width: 400%;
-// }
-// .marquee-1 div span,
-// .marquee-2 div span {
-//   width: 5%;
-//   font-size: 30px;
-// }
-
-// @media screen and (max-width: 700px) {
-//   .img-btn{
-//     width: 100vw;
-//   }
-//   .descreption{
-//     flex-direction: column;
-//   }
-// }

@@ -1,6 +1,7 @@
 import { GameType } from "../../dataFetching";
 import { useContext } from "react";
 import { MyContext, type ContextType } from "../../Context/cartContext";
+import { Link } from "react-router-dom";
 
 export default function GameCard({ game }: { game: GameType }) {
   const { cart, setCart } = useContext(MyContext) as ContextType;
@@ -11,7 +12,7 @@ export default function GameCard({ game }: { game: GameType }) {
     if (cart.includes(game.id)) {
       setCart(cart.filter((id: number) => id !== game.id));
     } else {
-      // if we use cart.push(gam.id), react will not change the state 
+      // if we use cart.push(gam.id), react will not change the state
       // because it compare the coming array using shallow equality
       // so we need to set new array in order to be updated
       setCart([...cart, game.id]);
@@ -20,18 +21,21 @@ export default function GameCard({ game }: { game: GameType }) {
 
   return (
     <div className="game-card">
-      <img src={game.background_image} alt={game.name} />
-      <div className="info">
-        <div className="price-and-add">
+      <Link to={`/games/game/${game.id}`}>
+        <img src={game.background_image} alt={game.name} />
+      </Link>
+
+      <div className="game-info">
+        <div className="price-and-add-btn">
           <button
-            className={`btn-add-game ${hasAdded ? "added" : "not-added"}`}
+            className={hasAdded ? "added" : ''}
             onClick={updateCart}
           >
             {hasAdded ? "Added" : "Add to cart+"}
           </button>
           <h3 className="price">$5.5</h3>
         </div>
-        <h2>{game.name}</h2>
+        <Link to={`/games/game/${game.id}`}>{game.name}</Link>
       </div>
     </div>
   );

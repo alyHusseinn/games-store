@@ -1,0 +1,79 @@
+@import './base';
+
+.games-shop{
+    width: 100%;
+    padding-top: 10vh; 
+    @include Flex(column, center, nowrap);
+    .main-bg-img{
+        width: 100%;
+        height: 300px;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(80%);
+        }
+        h1{
+            position: absolute;
+            right: 5%;
+            top: 80%;
+            color: $txt-color;
+            font-size: 45px;
+            font-weight: 2000;
+            text-transform: uppercase;
+        }
+    }
+    .games-data{
+        width: 100%;
+        @include Flex(row, center, wrap);
+        gap: 2rem;
+        padding-block: 3rem;
+    }
+    .game-card{
+        max-width: 350px;
+        background-color: $primary-color-light;
+        border-radius: 1rem;
+        transition: transform 0.3s ease-in-out;
+        a{
+            width: 100%;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .game-info{
+            padding: 10px;
+            .price-and-add-btn{
+                @include Flex(row, space-between, nowrap);
+                button{
+                    padding: 5px;
+                    font-size: 20px;
+                    background-color: $primary-color-light;
+                    color: $txt-color-sec;
+                    border: 0;
+                    cursor: pointer;
+                }
+                .price{
+                    color: $txt-color-sec;
+                }
+                .added{
+                    color: $secondary-color-light;
+                }
+            }
+            a{
+                color: $txt-color;
+                font-weight: 1000;
+                padding: 5px;
+            }
+        }
+        &:hover{
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+    }
+}
