@@ -18,16 +18,19 @@
 // 1. function to Fetch the games and store it in a global variable
 // 2. functions to getWhatWeWant from that global variable
 
-// import axios from "axios";
-const API_URL = 'https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090';
+const API_URL = 'https://api.rawg.io/api/games';
+const API_KEY = 'key=7e178da7d4cf4fdf8b011cc21741f090';
 
 export type GameType = {
     id: number,
     name: string,
     background_image: string,
-    // platforms: Array<{platform: {id:number, name:string}}>,
     genres: Array<{ id: string, name: string, image_background: string }>,
     short_screenshots: Array<{ image: string }>,
+    description?: string,
+    geners?: Array<{ id: string, name: string }>,
+    released?: string,
+    trailer?: string,
 }
 
 let GamesData: Array<GameType> = [];
@@ -36,45 +39,44 @@ let GamesData: Array<GameType> = [];
 
 async function fetchGamesData() {
     try {
-        const res = await fetch(API_URL,{mode: 'cors'});
-        const response = await res.json();
+        const res = await fetch(`${API_URL}?${API_KEY}`, { mode: 'cors' });
+        const response: { results: Array<GameType> } = await res.json();
 
-        console.log(response.results);
         return response.results;
     } catch (err) {
-        throw Error;
         console.log(err);
     }
-
-
-
-    // await fetch('https://api.rawg.io/api/games?key=7e178da7d4cf4fdf8b011cc21741f090',{mode: 'cors'})
-    //     .then(res => {
-    //         if (!res.ok) {
-    //             console.error(res.statusText);
-    //             throw new Error(res.statusText);
-    //         }
-    //         return res.json();
-    //     })
-    //     .then((res) => {
-    //         GamesData = res.results;
-    //         console.log(GamesData);
-    //     })
-    // .catch((err) => console.error(err));
 }
 
 async function getAllGames(): Promise<Array<GameType>> {
     if (GamesData.length == 0) {
-        GamesData = await fetchGamesData();
+        GamesData = await fetchGamesData() as Array<GameType>;
     }
     return GamesData;
 }
 
 async function getGame(id: number): Promise<GameType> {
-    if (GamesData.length == 0) {
-        GamesData = await fetchGamesData();
-    }
+    await getAllGames();
     return GamesData.find(g => g.id == id) as GameType;
 }
 
-export { getAllGames, getGame }
+async function getGameDetails(id: number): Promise<GameType> {
+    const res = await fetch(`${API_URL}/${id}?${API_KEY}`);
+    const detalis = await res.json();
+
+    const movRes = await fetch(`${API_URL}/${id}/movies?${API_KEY}`);
+    const movies = await movRes.json();
+
+    await getAllGames();
+    const Game: GameType = GamesData.find(g => g.id == id) as GameType;
+    
+    Game.description = detalis.description_row;
+    Game.geners = detalis.geners;
+    Game.released = detalis.released;
+    Game.trailer = movies.results[0].data.max;
+
+    return Game;
+}
+
+
+export { getAllGames, getGame, getGameDetails };
