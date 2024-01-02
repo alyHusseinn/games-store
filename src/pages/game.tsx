@@ -1,6 +1,7 @@
 import {  useLoaderData, Params } from "react-router-dom";
-import { type GameType, getGame } from "../dataFetching";
+import { type GameType, getGameDetails } from "../dataFetching";
 import useUpdateTitle from "../hooks/useUpdateTitle";
+import GameSwiper from "../components/game/gameSwiper";
 
 // const gamePath = "/game/:gameId";
 // interface paramsType extends LoaderFunctionArgs {
@@ -9,7 +10,7 @@ import useUpdateTitle from "../hooks/useUpdateTitle";
 
 export async function loader({params}: {params: Params<"gameId">}): Promise<GameType> {
   const gameID = Number(params.gameId);
-  const game = getGame(gameID);
+  const game = await getGameDetails(gameID);
   return game;
 }
 
@@ -20,9 +21,20 @@ function Game() {
   return (
     <div className="game">
       <div className="game-name">{game.name}</div>
-      {game.short_screenshots.map((img, idx) => (
-        <img src={img.image} alt={game.name} key={idx} />
-      ))}
+      <div className="game-info">
+        <GameSwiper imgs={game.short_screenshots}/>
+        <div className="info">
+          <div className="description">
+            {game.description}
+          </div>
+          <div className="geners">
+           Geners: {game.genres.map(gen => gen.name + "  ")}
+          </div>
+          <div className="released">
+            Release: {game.released}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

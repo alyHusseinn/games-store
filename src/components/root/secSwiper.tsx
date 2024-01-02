@@ -33,7 +33,7 @@ export default function SecSwiper({ games }: { games: Array<GameType> }) {
       >
         {games.map((game, idx) => (
           <SwiperSlide key={idx}>
-            <Link to={`/games/game/${game.id}`} className="game">
+            <Link to={`/games/game/${game.id}`}>
               <img src={game.background_image} />
               <h3>{game.name}</h3>
             </Link>

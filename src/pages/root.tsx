@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { getAllGames, GameType } from "../dataFetching";
+import { getAllGames, GameType } from "../dataFetching.ts";
 import MainSwiper from "../components/root/mainSwiper";
 import SecSection from "../components/root/SecSection";
 import SecSwiper from "../components/root/secSwiper";

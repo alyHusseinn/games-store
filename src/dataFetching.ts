@@ -28,7 +28,6 @@ export type GameType = {
     genres: Array<{ id: string, name: string, image_background: string }>,
     short_screenshots: Array<{ image: string }>,
     description?: string,
-    geners?: Array<{ id: string, name: string }>,
     released?: string,
     trailer?: string,
 }
@@ -64,16 +63,19 @@ async function getGameDetails(id: number): Promise<GameType> {
     const res = await fetch(`${API_URL}/${id}?${API_KEY}`);
     const detalis = await res.json();
 
-    const movRes = await fetch(`${API_URL}/${id}/movies?${API_KEY}`);
-    const movies = await movRes.json();
+    // const movRes = await fetch(`${API_URL}/${id}/movies?${API_KEY}`, {mode: 'cors'});
+    // let trailer: string = '';
+    // await movRes.json().then(movies => {
+    //     trailer = movies.results[0];
+    //     console.log(movies);
+    // });
 
     await getAllGames();
     const Game: GameType = GamesData.find(g => g.id == id) as GameType;
     
-    Game.description = detalis.description_row;
-    Game.geners = detalis.geners;
+    Game.description = detalis.description_raw;
     Game.released = detalis.released;
-    Game.trailer = movies.results[0].data.max;
+    // Game.trailer = trailer;
 
     return Game;
 }

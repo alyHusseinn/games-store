@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { getAllGames, GameType } from "../dataFetching";
+import { getAllGames, GameType } from "../dataFetching.ts";
 import useUpdateTitle from "../hooks/useUpdateTitle";
 import GameCard from "../components/shop/gameCard";
 import ShopMainImg from "../assets/imgs/shop-main.jpg";
