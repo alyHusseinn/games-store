@@ -5,6 +5,7 @@ import GameCard from "../components/shop/gameCard";
 import ShopMainImg from "../assets/imgs/shop-main.jpg";
 import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop.tsx";
 import { useRef } from "react";
+import useScrollTop from "../hooks/useScrollTop.tsx";
 
 export async function loader(): Promise<Array<GameType>> {
   const games = await getAllGames();
@@ -16,6 +17,7 @@ function GamesShop() {
   const shopRef = useRef<HTMLDivElement | null>(null);
   useAdjustPagePaddingTop(shopRef as React.MutableRefObject<HTMLDivElement>)
   useUpdateTitle("Games Shop");
+  useScrollTop();
 
   return (
     <div className="games-shop" ref={shopRef}>

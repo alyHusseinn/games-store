@@ -4,6 +4,7 @@ import MainSwiper from "../components/root/mainSwiper";
 import SecSection from "../components/root/SecSection";
 import SecSwiper from "../components/root/secSwiper";
 import useUpdateTitle from "../hooks/useUpdateTitle";
+import useScrollTop from "../hooks/useScrollTop.tsx";
 
 export async function loader(): Promise<Array<GameType>> {
   const games = await getAllGames();
@@ -13,6 +14,7 @@ export async function loader(): Promise<Array<GameType>> {
 function Root() {
   const games: Array<GameType> = useLoaderData() as Array<GameType>;
   useUpdateTitle('Home');
+  useScrollTop();
 
   return (
     <>
