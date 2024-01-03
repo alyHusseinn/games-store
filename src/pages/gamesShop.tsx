@@ -3,6 +3,8 @@ import { getAllGames, GameType } from "../dataFetching.ts";
 import useUpdateTitle from "../hooks/useUpdateTitle";
 import GameCard from "../components/shop/gameCard";
 import ShopMainImg from "../assets/imgs/shop-main.jpg";
+import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop.tsx";
+import { useRef } from "react";
 
 export async function loader(): Promise<Array<GameType>> {
   const games = await getAllGames();
@@ -11,10 +13,12 @@ export async function loader(): Promise<Array<GameType>> {
 
 function GamesShop() {
   const games: Array<GameType> = useLoaderData() as Array<GameType>;
+  const shopRef = useRef<HTMLDivElement | null>(null);
+  useAdjustPagePaddingTop(shopRef as React.MutableRefObject<HTMLDivElement>)
   useUpdateTitle("Games Shop");
 
   return (
-    <div className="games-shop">
+    <div className="games-shop" ref={shopRef}>
       <div className="main-bg-img">
         <img src={ShopMainImg} />
         <h1>Gaming Store...</h1>

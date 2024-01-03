@@ -2,13 +2,10 @@ import { useLoaderData, Params } from "react-router-dom";
 import { type GameType, getGameDetails } from "../dataFetching";
 import useUpdateTitle from "../hooks/useUpdateTitle";
 import GameSwiper from "../components/game/gameSwiper";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
+import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop";
 import { ContextType, MyContext } from "../Context/cartContext";
 
-// const gamePath = "/game/:gameId";
-// interface paramsType extends LoaderFunctionArgs {
-//   params: Params<ParamParseKey<typeof gamePath>>;
-// }
 
 export async function loader({
   params,
@@ -22,9 +19,10 @@ export async function loader({
 
 function Game() {
   const game: GameType = useLoaderData() as GameType;
-  useUpdateTitle(game.name);
   const { cart, setCart } = useContext(MyContext) as ContextType;
   const gameRef = useRef<HTMLDivElement | null>(null);
+  useAdjustPagePaddingTop(gameRef as React.MutableRefObject<HTMLDivElement>);
+  useUpdateTitle(game.name);
 
   const hasAdded = cart.includes(game.id);
 
@@ -39,12 +37,6 @@ function Game() {
     }
   }
 
-  useEffect(() => {
-    const header = document.querySelector("header") as HTMLDivElement;
-    const headerHeight = header.offsetHeight;
-    (gameRef.current as HTMLDivElement).style.paddingTop =
-      headerHeight + 10 + "px";
-  }, []);
 
   return (
     <div className="game" ref={gameRef}>
