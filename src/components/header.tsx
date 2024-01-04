@@ -22,7 +22,7 @@ function Header() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/games">Shop</Link>
-        <Link to="#">
+        <Link to="/cart">
           <img src={CartImg} alt="checkout" />
         </Link>
       </nav>

@@ -6,6 +6,7 @@ import App from "./App";
 import Root, { loader as rootLoader } from "./pages/root";
 import GamesShop, { loader as gamesLoader } from "./pages/gamesShop";
 import Game, { loader as gameLoader } from "./pages/game";
+import Cart, { loader as cartLoader } from "./pages/cart";
 import CartProvider from "./Context/cartProvider";
 
 const router = createBrowserRouter([
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
         index: true,
         element: <Root />,
         loader: rootLoader,
+      },
+      {
+        path: "cart",
+        element: <Cart/>,
+        loader: cartLoader,
       },
       {
         path: "games",
