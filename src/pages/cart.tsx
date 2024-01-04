@@ -6,6 +6,7 @@ import { getAllGames } from "../dataFetching";
 import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop";
 import { useRef } from "react";
 import useScrollTop from "../hooks/useScrollTop";
+import RemoveIcon from "../assets/imgs/remove.png";
 
 export async function loader(): Promise<Array<GameType>> {
   const game = await getAllGames();
@@ -22,10 +23,17 @@ export default function Cart() {
 
   return (
     <div className="cart" ref={cartRef}>
+      <div className="cart-info">
+        <div className="num">{cart.length} Games</div>
+        <button className="clear">Check out</button>
+        <div className="total-price">
+          ${cart.length * 5.5}
+        </div>
+      </div>
       <div className="cart-items">
         {gameInCart.map((game: GameType, index: number) => {
           return (
-            <div className="cart-item" key={index}>
+            <div className="item" key={index}>
               <Link to={`/games/game/${game.id}`}>
                 <img src={game.background_image} alt={game.name} />
               </Link>
@@ -34,7 +42,7 @@ export default function Cart() {
                   className="remove-btn"
                   onClick={() => removeFromCart(game.id)}
                 >
-                  x
+                  <img src={RemoveIcon} alt="remove from cart" />
                 </button>
                 <div className="name">{game.name}</div>
                 <div className="price">$5.5</div>
