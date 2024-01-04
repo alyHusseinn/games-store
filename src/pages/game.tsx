@@ -20,24 +20,13 @@ export async function loader({
 
 function Game() {
   const game: GameType = useLoaderData() as GameType;
-  const { cart, setCart } = useContext(MyContext) as ContextType;
+  const { cart, addToCart, removeFromCart } = useContext(MyContext) as ContextType;
   const gameRef = useRef<HTMLDivElement | null>(null);
   useAdjustPagePaddingTop(gameRef as React.MutableRefObject<HTMLDivElement>);
   useUpdateTitle(game.name);
   useScrollTop();
 
   const hasAdded = cart.includes(game.id);
-
-  function updateCart() {
-    if (cart.includes(game.id)) {
-      setCart(cart.filter((id: number) => id !== game.id));
-    } else {
-      // if we use cart.push(gam.id), react will not change the state
-      // because it compare the coming array using shallow equality
-      // so we need to set new array in order to be updated
-      setCart([...cart, game.id]);
-    }
-  }
 
 
   return (
@@ -46,7 +35,7 @@ function Game() {
       <div className="game-info">
         <GameSwiper imgs={game.short_screenshots} />
         <div className="price-and-add-btn">
-          <button className={hasAdded ? "added" : ""} onClick={updateCart}>
+          <button className={hasAdded ? "added" : ""} onClick={hasAdded? () => removeFromCart(game.id): () => addToCart(game.id)}>
             {hasAdded ? "Added" : "Add to cart+"}
           </button>
           <h3 className="price">$5.5</h3>
