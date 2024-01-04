@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { GameType } from "../dataFetching";
 import { Link, useLoaderData } from "react-router-dom";
 import { getAllGames } from "../dataFetching";
-import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop";
 import { useRef } from "react";
 import useScrollTop from "../hooks/useScrollTop";
 import RemoveIcon from "../assets/imgs/remove.png";
@@ -18,7 +17,6 @@ export default function Cart() {
   let gameInCart = useLoaderData() as Array<GameType>;
   gameInCart = gameInCart.filter((game) => cart.includes(game.id));
   const cartRef = useRef<HTMLDivElement | null>(null);
-  useAdjustPagePaddingTop(cartRef as React.MutableRefObject<HTMLDivElement>);
   useScrollTop();
 
   return (

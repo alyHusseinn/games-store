@@ -3,7 +3,6 @@ import { type GameType, getGameDetails } from "../dataFetching";
 import useUpdateTitle from "../hooks/useUpdateTitle";
 import GameSwiper from "../components/game/gameSwiper";
 import { useContext, useRef } from "react";
-import { useAdjustPagePaddingTop } from "../hooks/useAdjustPagePaddingTop";
 import useScrollTop from "../hooks/useScrollTop";
 import { ContextType, MyContext } from "../Context/cartContext";
 
@@ -22,7 +21,6 @@ function Game() {
   const game: GameType = useLoaderData() as GameType;
   const { cart, addToCart, removeFromCart } = useContext(MyContext) as ContextType;
   const gameRef = useRef<HTMLDivElement | null>(null);
-  useAdjustPagePaddingTop(gameRef as React.MutableRefObject<HTMLDivElement>);
   useUpdateTitle(game.name);
   useScrollTop();
 
