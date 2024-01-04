@@ -3,9 +3,12 @@ import useHasScrolledUp from "../hooks/useHasScrolledUp";
 import LogoImg from "../assets/imgs/logo.png";
 import CartImg from "../assets/imgs/shopping-bag.png";
 import SearchImg from "../assets/imgs/search.png";
+import { ContextType, MyContext } from "../Context/cartContext";
+import { useContext } from "react";
 
 function Header() {
   const hasScrolledUp = useHasScrolledUp();
+  const {cart} = useContext(MyContext) as ContextType;
 
   return (
     <header className={hasScrolledUp ? "show" : "hide"}>
@@ -22,8 +25,9 @@ function Header() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/games">Shop</Link>
-        <Link to="/cart">
+        <Link to="/cart" className="cart-link">
           <img src={CartImg} alt="checkout" />
+          <span>{cart.length}</span>
         </Link>
       </nav>
     </header>

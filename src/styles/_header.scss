@@ -96,6 +96,20 @@ header{
                 color: $txt-color;
             }
         }
+        .cart-link{
+            position: relative;
+            border: 0;
+            &:hover{
+                border: 0;
+            }
+            span{
+                color: $txt-color;
+                position: absolute;
+                top: 90%;
+                left: 25%;
+                font-weight: 800;
+            }
+        }
         img{
             width: 30px;
             filter: invert(70%);
