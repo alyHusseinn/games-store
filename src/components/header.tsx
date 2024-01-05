@@ -8,7 +8,7 @@ import { useContext } from "react";
 
 function Header() {
   const hasScrolledUp = useHasScrolledUp();
-  const {cart} = useContext(MyContext) as ContextType;
+  const { cart } = useContext(MyContext) as ContextType;
 
   return (
     <header className={hasScrolledUp ? "show" : "hide"}>
@@ -26,8 +26,12 @@ function Header() {
         <Link to="/">Home</Link>
         <Link to="/games">Shop</Link>
         <Link to="/cart" className="cart-link">
-          <img src={CartImg} alt="checkout" />
-          <span>{cart.length}</span>
+        <img src={CartImg} alt="checkout" />
+          {cart.length > 0 && (
+            <>
+              <span>{cart.length}</span>
+            </>
+          )}
         </Link>
       </nav>
     </header>
