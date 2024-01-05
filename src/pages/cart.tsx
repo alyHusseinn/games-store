@@ -13,17 +13,27 @@ export async function loader(): Promise<Array<GameType>> {
 }
 
 export default function Cart() {
-  const { cart, removeFromCart } = useContext(MyContext) as ContextType;
+  const { cart, removeFromCart, removeAll } = useContext(MyContext) as ContextType;
   let gameInCart = useLoaderData() as Array<GameType>;
   gameInCart = gameInCart.filter((game) => cart.includes(game.id));
   const cartRef = useRef<HTMLDivElement | null>(null);
   useScrollTop();
 
+  if(cart.length == 0) {
+    return <div className="cart" ref={cartRef}>
+      <div className="empty-cart">
+        <div className="message">your cart is empty.</div>
+        <Link to="/games" className="go-shop">shop now</Link>
+      </div>
+
+    </div>
+  }
+
   return (
     <div className="cart" ref={cartRef}>
       <div className="cart-info">
         <div className="num">{cart.length} Games</div>
-        <button className="clear">Check out</button>
+        <button className="clear" onClick={removeAll}>Check out</button>
         <div className="total-price">
           ${cart.length * 5.5}
         </div>

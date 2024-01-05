@@ -9,6 +9,9 @@ export default function CartProvider({children}: {children: React.ReactNode}) {
   const removeFromCart = (gamesId: number) => {
     setCart(cart.filter((id: number) => id !== gamesId));
   };
+  const removeAll = () => {
+    setCart([]);
+  }
   // if we use cart.push(gam.id), react will not change the state
   // because it compare the coming array using shallow equality
   // so we need to set new array in order to be updated
@@ -21,7 +24,7 @@ export default function CartProvider({children}: {children: React.ReactNode}) {
   }, [cart]);
 
   return (
-    <MyContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <MyContext.Provider value={{ cart, addToCart, removeFromCart, removeAll }}>
       {children}
     </MyContext.Provider>
   );
