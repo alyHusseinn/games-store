@@ -80,5 +80,12 @@ async function getGameDetails(id: number): Promise<GameType> {
     return Game;
 }
 
+function getSearchResults(word: string): Array<GameType>{
+    word = word.trim();
+    return word.length 
+    ? GamesData.filter((game: GameType) => game.name.toLowerCase().includes(word.toLowerCase()))
+    : [];
+}
 
-export { getAllGames, getGame, getGameDetails };
+
+export { getAllGames, getGame, getGameDetails, getSearchResults };
