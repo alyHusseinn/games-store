@@ -33,12 +33,25 @@
     z-index: 1;
     @include Flex(column, space-between, wrap);
     align-items: center;
-    text-align: center;
     gap: 1rem;
 
     .intro {
-      font-size: 2vw;
+      font-size: 40px;
+      font-weight: 1000;
       color: $txt-color;
+      padding: 10px;
+      .intor-1{
+        text-decoration:underline;
+        text-decoration-color: $primary-color-light;
+        span{
+          background-color: $primary-color;
+          color: $txt-color;
+          padding: 2px;
+          text-transform: uppercase;
+          border-radius: 5px;
+          box-shadow: 1px 3px 10px $primary-color;
+        }
+      }
     }
 
     a {

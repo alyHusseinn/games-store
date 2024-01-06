@@ -43,10 +43,12 @@ export default function MainSwiper() {
 
       <div className="info">
         <div className="intro">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-          aspernatur cum vel cumque. Aliquam, dolores officia explicabo rem,
-          animi excepturi labore harum modi repellendus est totam reiciendis
-          officiis doloremque consequuntur.
+          <div className="intor-1">
+          Explore The <span>best</span> games store in that world.
+          </div>
+          <div className="intor-2">
+            Your First step in the world of games should be here.
+          </div>
         </div>
         <Link to="/games" className="go-shopping-btn">
           go shopping..
