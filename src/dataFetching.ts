@@ -72,7 +72,7 @@ async function getGameDetails(id: number): Promise<GameType> {
 
     await getAllGames();
     const Game: GameType = GamesData.find(g => g.id == id) as GameType;
-    
+
     Game.description = detalis.description_raw;
     Game.released = detalis.released;
     // Game.trailer = trailer;
@@ -80,11 +80,11 @@ async function getGameDetails(id: number): Promise<GameType> {
     return Game;
 }
 
-function getSearchResults(word: string): Array<GameType>{
+function getSearchResults(word: string): Array<GameType> {
     word = word.trim();
-    return word.length 
-    ? GamesData.filter((game: GameType) => game.name.toLowerCase().includes(word.toLowerCase()))
-    : [];
+    return word.length
+        ? GamesData.filter((game: GameType) => game.name.toLowerCase().includes(word.toLowerCase()))
+        : [];
 }
 
 

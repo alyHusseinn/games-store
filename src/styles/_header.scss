@@ -1,140 +1,219 @@
-@import './base';
+@import "./base";
 
-header{
-    position: fixed;
-    z-index: 1000;
-    @include Flex(row, space-around, wrap);
-    gap: 1rem;
-    text-align: center;
+header {
+  position: fixed;
+  z-index: 1000;
+  @include Flex(row, space-around, wrap);
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  padding-block: 1rem;
+  background-color: $secondary-color;
+  color: $txt-color;
+  // box-shadow: -2px 1px 50px black;
+  // border-bottom: 3px solid $txt-color;
+  // cubic-bezier(1,-1.59, 0, 3.2)
+  transition: all 0.7s linear;
+  transform-origin: top;
+  // margin-bottom: 300px
+  .logo {
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    h1 {
+      font-size: 25px;
+      color: $txt-color;
+    }
+    img {
+      width: 40px;
+      filter: invert(70%);
+    }
+  }
+
+  form {
+    background-color: $txt-color;
+    @include Flex(row, center, nowrap);
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 2px solid $txt-color;
+    overflow: hidden;
+    opacity: 0.6;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+      input {
+        width: 100%;
+      }
+    }
+    input {
+      width: 20%;
+      font-size: 20px;
+      font-style: $secondary-color;
+      padding: 7px;
+      border: 0;
+      transition: width 1s cubic-bezier(0.87, -0.45, 0.19, 1.49);
+      // &:hover{
+      //     width: 100%;
+      // }
+      &:focus {
+        border: 0;
+        outline: none;
+      }
+    }
+    button {
+      background-color: $txt-color;
+      border: 0;
+      padding: 5px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+      img {
+        width: 25px;
+        filter: drop-shadow(2px 4px 4px black);
+      }
+    }
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
     width: 100%;
-    padding-block: 1rem;
-    background-color: $secondary-color;
-    color: $txt-color;
-    // box-shadow: -2px 1px 50px black;
-    // border-bottom: 3px solid $txt-color;
-    // cubic-bezier(1,-1.59, 0, 3.2)
-    transition: all 0.7s linear;
-    transform-origin: top;
-    // margin-bottom: 300px
-    .logo{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        h1{
-            font-size: 25px;
-            color: $txt-color;
-        }
-        img{
-            width: 40px;
-            filter: invert(70%);
-        }
-    }
-
-    form{
-        background-color: $txt-color;
-        @include Flex(row, center, nowrap);
-        align-items: center;
-        border-radius: 0.5rem;
-        border: 2px solid $txt-color;
-        overflow: hidden;
-        opacity: 0.6;
-        margin-left: 10px;
-        margin-right: 10px;
-        transition: all 0.5s ease-in-out;
-
-        &:hover{
-            opacity: 0.8;
-            input{
-                width: 100%;
-            }
-        }
-        input{
-            width: 20%;
-            font-size: 20px;
-            font-style: $secondary-color;
-            padding: 7px;
-            border: 0;
-            transition: width 1s cubic-bezier(0.87,-0.45, 0.19, 1.49);
-            // &:hover{
-            //     width: 100%;
-            // }
-            &:focus{
-                border: 0;
-                outline: none;
-            }
-        }
-        button{
-            background-color: $txt-color;
-            border: 0;
-            padding: 5px;
-            transition: all 0.3s ease-in-out;
-            
-            &:hover{
-                transform: scale(1.1);
-                cursor: pointer;
-            }
-            img{
-                width: 25px;
-                filter: drop-shadow(2px 4px 4px black);
-            }
-        }
-    }
-
-    nav{
-        @include Flex(row, space-between, nowrap);
-        align-items: center;
-        flex-basis: 20%;
-        gap: 1rem;
-        a{
+    background-color: $txt-color-sec;
+    height: 100vh;
+    padding-block: 2rem;
+    overflow: auto;
+    @include Flex(column, center, nowrap);
+    gap: 1rem;
+    align-items: center;
+    .res-num{
+        color: $primary-color;
+        font-size: 20px;
+        font-weight: 1000;
+        span{
+            background-color: $primary-color;
             color: $txt-color-sec;
-            font-size: 15px;
-            border-bottom: 2px solid $secondary-color;
-            transition: all 0.3s ease-in-out;
-            &:hover{
-                border-bottom: 2px solid $txt-color;
-                color: $txt-color;
-            }
-        }
-        .cart-link{
-            position: relative;
-            border: 0;
-            &:hover{
-                border: 0;
-            }
-            span{
-                width: 18px;
-                height: 18px;
-                border-radius: 50%;
-                padding: 2px;
-                font-size: 12px;
-                line-height: 20px;
-                text-align: center;
-                background-color: $txt-color-sec;
-                color: $primary-color;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                font-weight: 1000;
-            }
-        }
-        img{
-            width: 30px;
-            filter: invert(70%);
-            &:hover{
-                filter: invert(100%);
-            }
+            padding: 10px;
+            border-radius: 5px;
         }
     }
-}
-
-
-.hide{
-    transform: rotateX(180deg);
-}
-
-@media  screen and (max-width: 1000px) {
-    header{
-        flex-direction: column;
+    .delete-search {
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      padding: 10px;
+      img {
+        transition: all 300ms ease-in-out;
+      }
+      img:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
     }
+    .results {
+      width: 100%;
+      height: 100%;
+      @include Flex(column, center, nowrap);
+      align-items: center;
+      gap: 1rem;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+      .game-res {
+        width: 80%;
+        @include Flex(row, space-between, nowrap);
+        background-color: $primary-color-light;
+        border-radius: 20px;
+        transition: all 300ms ease-in-out;
+        &:hover {
+          transform: scale(1.03);
+          background-color: $primary-color;
+          .name {
+            color: $txt-color;
+          }
+        }
+        img {
+          width: 50%;
+          height: 150px;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 10px;
+        }
+        .name {
+          color: $txt-color-sec;
+          font-size: 25px;
+          padding: 10px;
+          font-weight: 1000;
+        }
+        @media screen and (max-width: 500px) {
+          .name {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  nav {
+    @include Flex(row, space-between, nowrap);
+    align-items: center;
+    flex-basis: 20%;
+    gap: 1rem;
+    a {
+      color: $txt-color-sec;
+      font-size: 15px;
+      border-bottom: 2px solid $secondary-color;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        border-bottom: 2px solid $txt-color;
+        color: $txt-color;
+      }
+    }
+    .cart-link {
+      position: relative;
+      border: 0;
+      &:hover {
+        border: 0;
+      }
+      span {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        padding: 2px;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        background-color: $txt-color-sec;
+        color: $primary-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-weight: 1000;
+      }
+    }
+    img {
+      width: 30px;
+      filter: invert(70%);
+      &:hover {
+        filter: invert(100%);
+      }
+    }
+  }
+}
+
+.hide {
+  transform: rotateX(180deg);
+}
+
+@media screen and (max-width: 1000px) {
+  header {
+    flex-direction: column;
+  }
 }
